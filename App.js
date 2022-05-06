@@ -22,7 +22,7 @@ export default function App() {
       <View style={styles.cidadeView}>
         {/* View para entrada de dados */}
         <TextInput
-          styles={styles.cidadeTextInput}
+          style={styles.cidadeTextInput}
           placeholder="Digite o nome da cidade"
           value={cidade}
           onChangeText={capturarCidade}
@@ -33,7 +33,12 @@ export default function App() {
       </View>
       {/* exibição das previsões */}
       <FlatList
-
+        data={previsoes}
+        renderItem={
+          p => {
+            <Text>{JSON.stringify(p)}</Text>
+          }
+        }
       />
     </View>
   )

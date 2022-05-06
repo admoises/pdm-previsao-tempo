@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { 
   Button,
   FlatList,
@@ -5,19 +6,26 @@ import {
   Text, 
   TextInput,
   View 
-} from 'react-native';
+} from 'react-native'
 import { 
   LANGUAGE 
 } from '@env'
 
 export default function App() {
+  const [cidade, setCidade] = useState('')
+  const capturarCidade = (cidadeDigitada) =>{
+    setCidade(cidadeDigitada)
+  }
   return (
     <View style={styles.container}>
+
       <View style={styles.cidadeView}>
         {/* View para entrada de dados */}
         <TextInput
           styles={styles.cidadeTextInput}
           placeholder="Digite o nome da cidade"
+          value={cidade}
+          onChangeText={capturarCidade}
         />
         <Button
           title="OK"
@@ -28,7 +36,7 @@ export default function App() {
 
       />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -47,4 +55,4 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     textAlign: 'center'
   }
-});
+})

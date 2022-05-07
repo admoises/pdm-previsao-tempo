@@ -13,6 +13,7 @@ import {
 
 export default function App() {
   const [cidade, setCidade] = useState('')
+  const [previsoes, setPrevisoes] = useState([])
   const capturarCidade = (cidadeDigitada) =>{
     setCidade(cidadeDigitada)
   }

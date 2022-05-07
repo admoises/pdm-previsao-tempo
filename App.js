@@ -8,7 +8,12 @@ import {
   View 
 } from 'react-native'
 import { 
-  LANGUAGE 
+  APP_ID,
+  BASE_URL,
+  CNT,
+  LANGUAGE,
+  PROTOCOL,
+  UNITS
 } from '@env'
 
 export default function App() {
@@ -16,6 +21,10 @@ export default function App() {
   const [previsoes, setPrevisoes] = useState([])
   const capturarCidade = (cidadeDigitada) =>{
     setCidade(cidadeDigitada)
+  }
+  const obterPrevisoes = () => {
+    const url = encodeURI(`${PROTOCOL}://${BASE_URL}?units=${UNITS}&cnt=${CNT}&lang=${LANGUAGE}&appid=${APP_ID}&q=${cidade}`)
+    console.log(url)
   }
   return (
     <View style={styles.container}>
@@ -30,6 +39,7 @@ export default function App() {
         />
         <Button
           title="OK"
+          onPress={obterPrevisoes}
         />
       </View>
       {/* exibição das previsões */}
@@ -60,5 +70,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     marginBottom: 4,
     textAlign: 'center'
+  },
+  previsaoCard: {
+
   }
 })
